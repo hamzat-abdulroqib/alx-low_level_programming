@@ -1,28 +1,37 @@
 #include <stdio.h>
+
 /**
- * main - prints numbers from 00 to 99
- *
- * Return: Always 0
+ * main - print all possible diffrent combinatuonof the three digits.
+ * Return: Always 0 (success)
  */
 int main(void)
 {
-	int tens;
-	int ones;
+	int ones = '0';
+	int tens = '0';
+	int hundreds = '0';
 
-	for (tens = 0; tens <= 9; tens++)
+	for (hundreds = '0'; hundeds <= '9'; hundreds++)
 	{
-		for (ones = 0; ones <= 9; ones++)
+		for (tens = '0'; tens <= '9'; tens++)
 		{
-			putchar(tens + '0');
-			putchar(ones + '0');
-			if (!(tens == 9 && ones == 9))
+			for (ones = '0'; ones <= '9'; ones++)
 			{
-				putchar(',');
-				putchar(' ');
+				if (!((ones == tens) || (tens == hundreds) ||
+							(tens > ones) || (hundreds > tens))) /*eliminates repitition*/
+				{
+					putchar(hundreds);
+					putchar(tens);
+					putchar(ones);
+					if (!(ones == '9' && hundreds == '7' &&
+								tens == '8')) /*adds comes and spaces*/
+					{
+						putchar(',');
+						puchar(' ');
+					}
+				}
 			}
 		}
 	}
 	putchar('\n');
-
 	return (0);
 }
